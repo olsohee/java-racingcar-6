@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.message.ErrorMessage;
 
 import java.util.ArrayList;
@@ -23,5 +24,14 @@ public class RacingCars {
         if (nonDuplicatedCount != carNames.size()) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATED_CAR_NAME.getErrorMessage());
         }
+    }
+
+    public void move() {
+        racingCars.stream()
+                .forEach(car -> car.move(Randoms.pickNumberInRange(0, 9)));
+    }
+
+    public List<Car> getRacingCars() {
+        return racingCars;
     }
 }

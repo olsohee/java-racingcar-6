@@ -14,6 +14,7 @@ public class Controller {
     private final InputValidator inputValidator;
     private final OutputView outputView;
     private final Service service;
+    private int playCount;
 
     public Controller(InputView inputView, InputValidator inputValidator, OutputView outputView, Service service) {
         this.inputView = inputView;
@@ -35,8 +36,12 @@ public class Controller {
     }
 
     private void play() {
-        int playCount = inputValidator.convertStringToInt(inputView.readPlayCount());
-        service.play(playCount);
-
+        playCount = inputValidator.convertStringToInt(inputView.readPlayCount());
+        outputView.printResultStartMessage();
+        while (playCount > 0) {
+            service.play();
+            outputView.printResult(service.getResultDto());
+            playCount--;
+        }
     }
 }

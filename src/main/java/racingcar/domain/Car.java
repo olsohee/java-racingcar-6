@@ -18,4 +18,18 @@ public class Car {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_LENGTH.getErrorMessage());
         }
     }
+
+    public void move(int randomNumber) {
+        if (randomNumber >= 4) {
+            position++;
+        }
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }
