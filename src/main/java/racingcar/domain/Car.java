@@ -1,40 +1,31 @@
 package racingcar.domain;
 
-import racingcar.message.ErrorMessage;
-
 public class Car implements Comparable<Car> {
 
-    private String carName;
-    private int position;
+    private CarName carName;
+    private Position position;
 
     public Car(String carName) {
-        validateLength(carName);
-        this.carName = carName;
-        this.position = 0;
-    }
-
-    private void validateLength(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_LENGTH.getErrorMessage());
-        }
+        this.carName = new CarName(carName);
+        this.position = new Position();
     }
 
     public void move(int randomNumber) {
         if (randomNumber >= 4) {
-            position++;
+            position.move();
         }
     }
 
     public String getCarName() {
-        return carName;
+        return carName.getCarName();
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     @Override
     public int compareTo(Car other) {
-        return this.position - other.position;
+        return this.position.compareTo(other.position);
     }
 }
