@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.service.Service;
-import racingcar.validator.InputConvertor;
+import racingcar.convertor.InputConvertor;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

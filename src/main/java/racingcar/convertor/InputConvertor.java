@@ -1,4 +1,4 @@
-package racingcar.validator;
+package racingcar.convertor;
 
 import racingcar.message.ErrorMessage;
 
