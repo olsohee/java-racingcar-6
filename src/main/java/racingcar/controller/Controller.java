@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.service.Service;
-import racingcar.validator.InputValidator;
+import racingcar.validator.InputConvertor;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,14 +11,14 @@ import java.util.List;
 public class Controller {
 
     private final InputView inputView;
-    private final InputValidator inputValidator;
+    private final InputConvertor inputConvertor;
     private final OutputView outputView;
     private final Service service;
     private int playCount;
 
-    public Controller(InputView inputView, InputValidator inputValidator, OutputView outputView, Service service) {
+    public Controller(InputView inputView, InputConvertor inputConvertor, OutputView outputView, Service service) {
         this.inputView = inputView;
-        this.inputValidator = inputValidator;
+        this.inputConvertor = inputConvertor;
         this.outputView = outputView;
         this.service = service;
     }
@@ -36,7 +36,7 @@ public class Controller {
     }
 
     private void play() {
-        playCount = inputValidator.convertStringToInt(inputView.readPlayCount());
+        playCount = inputConvertor.convertToInt(inputView.readPlayCount());
         outputView.printResultStartMessage();
         while (playCount > 0) {
             service.play();
