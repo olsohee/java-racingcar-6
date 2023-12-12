@@ -24,6 +24,7 @@ public class Controller {
 
     public void start() {
         generateRacingCars();
+        play();
     }
 
     private void generateRacingCars() {
@@ -31,5 +32,11 @@ public class Controller {
                 .map(name -> name.trim())
                 .toList();
         service.generateRacingCars(carNames);
+    }
+
+    private void play() {
+        int playCount = inputValidator.convertStringToInt(inputView.readPlayCount());
+        service.play(playCount);
+
     }
 }
