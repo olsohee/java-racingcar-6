@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import racingcar.message.ErrorMessage;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private String carName;
     private int position;
@@ -31,5 +31,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        return this.position - other.position;
     }
 }

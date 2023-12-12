@@ -34,4 +34,17 @@ public class RacingCars {
     public List<Car> getRacingCars() {
         return racingCars;
     }
+
+    public List<Car> findWinners() {
+        Car maxPositionCar = findMaxPositionCar();
+        return racingCars.stream()
+                .filter(car -> car.compareTo(maxPositionCar) == 0)
+                .toList();
+    }
+
+    private Car findMaxPositionCar() {
+        return racingCars.stream()
+                .max((car1, car2) -> car1.compareTo(car2))
+                .get();
+    }
 }

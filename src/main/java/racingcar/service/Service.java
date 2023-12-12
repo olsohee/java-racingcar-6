@@ -1,7 +1,8 @@
 package racingcar.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.domain.Car;
 import racingcar.domain.RacingCars;
+import racingcar.dto.FinalWinnerDto;
 import racingcar.dto.ResultDto;
 
 import java.util.List;
@@ -22,5 +23,13 @@ public class Service {
         return racingCars.getRacingCars().stream()
                 .map(car -> new ResultDto(car.getCarName(), car.getPosition()))
                 .toList();
+    }
+
+    public FinalWinnerDto getFinalWinnerDto() {
+        List<Car> winners = racingCars.findWinners();
+        List<String> winnerNames = winners.stream()
+                .map(car -> car.getCarName())
+                .toList();
+        return new FinalWinnerDto(winnerNames);
     }
 }

@@ -43,5 +43,6 @@ public class Controller {
             outputView.printResult(service.getResultDto());
             playCount--;
         }
+        outputView.printFinalWinner(service.getFinalWinnerDto());
     }
 }

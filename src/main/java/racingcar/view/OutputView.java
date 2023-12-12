@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.dto.FinalWinnerDto;
 import racingcar.dto.ResultDto;
 import racingcar.message.OutputMessage;
 
@@ -30,5 +31,9 @@ public class OutputView {
                                OutputMessage.POSITION.getMessage().repeat(dto.getPosition()))
                 ));
         System.out.println();
+    }
+
+    public void printFinalWinner(FinalWinnerDto finalWinnerDto) {
+        System.out.println(String.format(OutputMessage.FINAL_WINNER.getMessage(), String.join(", ",finalWinnerDto.getWinnerNames())));
     }
 }
